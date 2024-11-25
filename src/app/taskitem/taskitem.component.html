@@ -1,0 +1,6 @@
+<div class="task">
+    <h3>{{taskName}}</h3>
+    <p>due Date: {{dueDate | date: 'shortDate'}}</p>
+    <p>Status : {{status}}</p>
+    <button (click)="onComplited()" [disabled]="status === 'completed'" >Completed</button>
+</div>

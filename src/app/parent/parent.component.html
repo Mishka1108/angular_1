@@ -1,0 +1,25 @@
+<div>
+    <h3>Task Manager</h3>
+  
+  
+    <div>
+      <input #taskName type="text" placeholder="Task Name" />
+      <input #dueDate type="date" />
+      <button (click)="addtask(taskName.value, dueDate.value)">Add Task</button>
+    </div>
+
+    <button (click)="toggle()">Show {{ filterStatus === 'completed' ? 'Pending' : 'Completed' }} Tasks</button>
+  
+   
+    <div *ngFor="let task of tasks">
+      <div *ngIf="filterStatus === 'all' || task.status === filterStatus" [appHighlightUrgent]="task.dueDate">
+        <app-taskitem
+          [taskName]="task.name"
+          [dueDate]="task.dueDate"
+          [status]="task.status"
+          (markCompleted)="ascompleted(task)"
+        ></app-taskitem>
+      </div>
+    </div>
+  </div>
+  
